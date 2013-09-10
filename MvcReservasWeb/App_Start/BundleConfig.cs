@@ -32,6 +32,9 @@ namespace MvcReservasWeb
             bundles.Add(new ScriptBundle("~/bundles/placeholder").Include(
                 "~/Scripts/jquery.placeholder.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/validate").Include(
+                "~/Scripts/jquery.validate.js"));
+
             bundles.Add(new StyleBundle("~/Content/bootstrap/css").Include(
                             //"~/Content/bootstrap/bootstrap-theme.min.css",
                             "~/Content/bootstrap/bootstrap.css"));

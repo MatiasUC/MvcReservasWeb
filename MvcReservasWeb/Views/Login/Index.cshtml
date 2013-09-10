@@ -46,20 +46,26 @@
                     <img alt="Reservas" src="~/Images/reserva2.jpg" class="img-rounded" />
                 </div>
                 <div class="col-md-5">
+                    <div class="row">
+                        &nbsp;
+                    </div>
+                    <div class="row">
+                        &nbsp;
+                    </div>
                     <fieldset class="control-group">
                         <legend>Login - Inicio de sesión</legend>
                         <form id="formLogin" runat="server" class="form-horizontal">
                             <div class="form-group">
                                 <label for="username" class="col-md-3 control-label">Usuario</label>
                                 <div class="col-md-8">
-                                    <input type="text" id="username" placeholder="Usuario" class="form-control">
+                                    <input type="text" id="username" name="username" placeholder="Usuario" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="username" class="col-md-3 control-label">Password</label>
+                                <label for="password" class="col-md-3 control-label">Password</label>
                                 <div class="col-md-8">
-                                    <input type="password" placeholder="Password" class="form-control">
-                                </div>
+                                    <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+                               </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-offset-3 col-md-2">
@@ -78,14 +84,19 @@
                 </div>
             </div>
         </div>
-
-        <div class="container">
-            <hr>
-            <footer>
-                <p>&copy; InfoTeX 2013</p>
-            </footer>
-        </div> <!-- /container -->        
         
+        <hr />
+        
+        <div class="footer">
+            <div class="container">
+                <div class="col-md-offset-5 col-md-4">
+                    <footer>
+                        <p>&copy; 2013 <a href="#" title="InfoTeX Ltda.">InfoTeX Ltda.</a> Todos los derechos reservados.</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <!--<script>window.jQuery || document.write('<script src="js/jquery-1.10.1.min.js"><\/script>')</script>
 
@@ -95,6 +106,7 @@
 
         @Scripts.Render("~/bundles/bootstrap")
         @Scripts.Render("~/bundles/placeholder")
+        @Scripts.Render("~/bundles/validate")
 
         <script>
             var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
@@ -112,6 +124,26 @@
             $(function () {
                 // Invoke the plugin
                 $('input, textarea').placeholder();
+                
+                $('#formLogin').validate(
+                {
+                    rules: {
+                        username: {
+                            required: true
+                        },
+                        password    : {
+                            required: true
+                        }
+                    },
+                    highlight: function (element) {
+                        $(element).closest('.control-group').removeClass('success').addClass('error');
+                    },
+                    success: function (element) {
+                        element
+                        .text('OK!').addClass('valid')
+                        .closest('.control-group').removeClass('error').addClass('success');
+                    }
+                });
             });
         </script>
        

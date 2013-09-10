@@ -6805,12 +6805,16 @@ td.visible-print {
 }
 
 /* Propios de RWeb*/
-.divLogin
-{
-    position:absolute;
-    top:25%;
-    left:25%;
-    min-height:450px;
-    max-height:750px;
+.footer {
+  padding: 15px;
+  margin-bottom: 0px;
+  font-size: 10px;
+  font-weight: 100;
+  line-height: 1.0;
+  color: inherit;
+  background-color: #ddd;
 }
 
+.footer p {
+  line-height: 1.0;
+}
